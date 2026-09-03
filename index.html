@@ -122,9 +122,18 @@
 
   /* Practical strip */
   .practical{background:var(--ink); color:var(--cream);}
-  .practical .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:36px;}
+  .practical .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:36px; margin-bottom:56px;}
   .practical h4{font-family:'Fraunces',serif; font-size:1.6rem; font-weight:500; margin-bottom:8px;}
   .practical p{font-size:0.85rem; color:#C9C0AE;}
+  .detail-block{border-top:1px solid rgba(246,239,225,0.16); padding-top:32px; margin-top:32px;}
+  .detail-block h4{font-family:'Fraunces',serif; font-size:1.35rem; font-weight:500; color:var(--cream); margin-bottom:16px;}
+  .detail-cols{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .park-list{list-style:none; font-size:0.88rem; color:#D8C9A3;}
+  .park-list li{display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid rgba(246,239,225,0.1);}
+  .park-list li b{color:var(--cream); font-weight:500;}
+  .budget-list{list-style:none; font-size:0.88rem; color:#D8C9A3;}
+  .budget-list li{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(246,239,225,0.1);}
+  .budget-total{display:flex; justify-content:space-between; padding:12px 0 0; font-size:0.95rem; color:var(--cream); font-weight:600;}
 
   /* Partner spotlight */
   .spotlight{display:grid; grid-template-columns:0.9fr 1.1fr; gap:52px; align-items:center;}
@@ -207,7 +216,7 @@
     </div>
     <div class="markets">
       <div class="market">
-        <div class="dates">24 nov. → 30 déc.</div>
+        <div class="dates">23 nov. → 29 déc.</div>
         <h3>Colmar</h3>
         <p>Six marchés répartis dans la vieille ville, dont un dédié aux artisans locaux place de l'Ancienne Douane. Le plus dense, le plus photogénique, aussi le plus fréquenté.</p>
         <div class="tip">À faire : arriver par le quartier de la Petite Venise, moins de monde qu'en venant de la gare.</div>
@@ -282,11 +291,79 @@
       <h2 style="color:var(--cream); max-width:24ch;">Ce qu'on répond le plus souvent</h2>
     </div>
     <div class="wrap" style="padding:0;">
-      <div class="wrap" style="padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
-        <div><h4>Stationnement</h4><p>Parkings relais conseillés à Colmar et Strasbourg les week-ends de forte affluence — liste et tarifs à jour.</p></div>
-        <div><h4>Avec des enfants</h4><p>Mulhouse et Obernai offrent plus d'espace et moins de foule que les grands marchés du centre.</p></div>
-        <div><h4>Budget moyen</h4><p>Repas sur le pouce, vin chaud et un artisanat : ce que dépense réellement un visiteur, marché par marché.</p></div>
-        <div><h4>Accès train</h4><p>Correspondances directes depuis Strasbourg vers Colmar, Sélestat et Obernai — fréquences en période de fêtes.</p></div>
+      <div class="grid4">
+        <div><h4>Stationnement</h4><p>La Grande Île de Strasbourg et le centre de Colmar sont fermés à la circulation pendant le marché — voir le détail des parkings relais ci-dessous.</p></div>
+        <div><h4>Avec des enfants</h4><p>Mulhouse (patinoire, village dédié) et Munster (grands espaces, moins de foule) sont les mieux adaptés aux familles.</p></div>
+        <div><h4>Budget moyen</h4><p>Compter 25 à 35€ par personne pour une demi-journée : détail ci-dessous, poste par poste.</p></div>
+        <div><h4>Accès train</h4><p>Colmar (gare TGV) et Strasbourg sont reliés en 35 minutes environ — le train évite le casse-tête du stationnement.</p></div>
+      </div>
+
+      <div class="detail-cols">
+        <div class="detail-block">
+          <h4>Se garer à Strasbourg</h4>
+          <ul class="park-list">
+            <li><span>Rotonde</span><b>5 min · trams A/D</b></li>
+            <li><span>Ducs d'Alsace</span><b>8 min · trams A/D</b></li>
+            <li><span>Parc des Romains</span><b>9 min · tram F</b></li>
+            <li><span>Elsau</span><b>11 min · tram B</b></li>
+            <li><span>Baggersee</span><b>15 min · trams A/E</b></li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h4>Se garer à Colmar</h4>
+          <ul class="park-list">
+            <li><span>Parc des Expositions</span><b>3€ le week-end, navette gratuite</b></li>
+            <li><span>Parking Mairie</span><b>payant, centre-ville</b></li>
+            <li><span>Parking Rapp</span><b>payant, centre-ville</b></li>
+            <li><span>Parking Gare / Bleylé</span><b>payant, 10 min à pied</b></li>
+            <li><span>Parking St Josse</span><b>payant, centre-ville</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="detail-cols">
+        <div class="detail-block">
+          <h4>Le budget d'une demi-journée</h4>
+          <ul class="budget-list">
+            <li><span>Vin chaud (1 verre)</span><span>4 à 5€</span></li>
+            <li><span>Bredele, sachet</span><span>6 à 8€</span></li>
+            <li><span>Tarte flambée</span><span>8 à 10€</span></li>
+            <li><span>Petit artisanat / décoration</span><span>10 à 15€</span></li>
+          </ul>
+          <div class="budget-total"><span>Total estimé</span><span>25 à 35€ / personne</span></div>
+        </div>
+        <div class="detail-block">
+          <h4>Se déplacer sans voiture</h4>
+          <p style="max-width:44ch;">Strasbourg – Colmar : environ 35 minutes en train, plusieurs départs par heure. Colmar – Sélestat : 15 minutes. Une navette de Noël gratuite relie aussi Colmar à Munster les week-ends, et le réseau "Pays des Étoiles" dessert Riquewihr, Ribeauvillé et Kaysersberg en haute saison.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="colombage"></div>
+
+<section id="itineraires">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Trois façons de combiner sa journée</h2>
+      <p>Les marchés proches se cumulent bien — voici des trajets qui tiennent en une demi-journée à un week-end.</p>
+    </div>
+    <div class="markets">
+      <div class="market">
+        <div class="dates">Une demi-journée</div>
+        <h3>Colmar + Turckheim + Eguisheim</h3>
+        <p>Les trois villages se touchent presque, à moins de 15 minutes en voiture les uns des autres. Matinée à Colmar, déjeuner à Turckheim, fin d'après-midi à Eguisheim pour la lumière du coucher de soleil.</p>
+      </div>
+      <div class="market">
+        <div class="dates">Un week-end</div>
+        <h3>Strasbourg + Obernai + Sélestat</h3>
+        <p>Journée complète à Strasbourg le premier jour, puis Obernai et Sélestat le lendemain — deux marchés plus calmes, à moins de 30 minutes de route l'un de l'autre.</p>
+      </div>
+      <div class="market">
+        <div class="dates">Trois jours</div>
+        <h3>La route des vins : Riquewihr, Ribeauvillé, Kaysersberg</h3>
+        <p>Le cœur historique du "Pays des Étoiles". Un village par jour permet de prendre le temps, avec les navettes de Noël qui relient les trois sans reprendre la voiture à chaque étape.</p>
       </div>
     </div>
   </div>
