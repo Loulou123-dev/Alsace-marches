@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alsace, Marché par Marché</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#1F3D2C;
+    --pine-deep:#152A1F;
+    --parchment:#F1E7D2;
+    --ember:#C1652F;
+    --ember-deep:#9C4A1F;
+    --ink:#211B14;
+    --cream:#F6EFE1;
+    --line: rgba(33,27,20,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* Half-timbered motif divider */
+  .colombage{
+    height:14px;
+    background-image:
+      repeating-linear-gradient(115deg, transparent 0 26px, var(--ink) 26px 28px),
+      repeating-linear-gradient(65deg, transparent 0 26px, var(--ink) 26px 28px);
+    opacity:0.85;
+  }
+
+  /* Top nav */
+  header.nav{
+    background:var(--parchment);
+    padding:22px 0 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-family:'Fraunces', serif; font-size:1.35rem; font-weight:600;}
+  .brand span{color:var(--ember-deep);}
+  .nav-links{display:flex; gap:28px; font-size:0.92rem;}
+  .lang-switch{display:flex; gap:10px; font-size:0.82rem; opacity:0.75;}
+  .lang-switch b{opacity:1; text-decoration:underline; text-underline-offset:3px;}
+
+  /* Hero */
+  .hero{
+    background:var(--pine);
+    color:var(--cream);
+    padding:76px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:end;}
+  .kicker{
+    font-size:0.95rem;
+    color:#D8C9A3;
+    max-width:34ch;
+    margin-bottom:22px;
+  }
+  .hero h1{font-size:3.1rem; line-height:1.05; max-width:14ch; font-weight:500;}
+  .hero .sub{margin-top:22px; max-width:46ch; font-size:1.05rem; color:#E7DFC8;}
+  .hero-actions{display:flex; gap:14px; margin-top:34px;}
+  .btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:2px;
+    font-size:0.92rem;
+    font-weight:500;
+    text-decoration:none;
+    border:1px solid transparent;
+  }
+  .btn-ember{background:var(--ember); color:var(--cream);}
+  .btn-ghost{border-color:rgba(246,239,225,0.4); color:var(--cream);}
+  .hero-panel{
+    background:var(--pine-deep);
+    border:1px solid rgba(246,239,225,0.18);
+    padding:26px;
+  }
+  .hero-panel h3{font-size:1.05rem; color:var(--cream); font-weight:500; margin-bottom:14px;}
+  .hero-panel .field{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 0; border-bottom:1px solid rgba(246,239,225,0.14);
+    font-size:0.9rem; color:#D8C9A3;
+  }
+  .hero-panel .field b{color:var(--cream); font-weight:500;}
+
+  /* Section shell */
+  section{padding:68px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:38px; gap:20px;}
+  .section-head h2{font-size:1.9rem; font-weight:500; max-width:20ch;}
+  .section-head p{font-size:0.92rem; max-width:32ch; opacity:0.75;}
+
+  /* Market cards */
+  .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--ink);}
+  .market{
+    background:var(--parchment);
+    padding:28px 26px 30px;
+  }
+  .market .dates{font-size:0.78rem; color:var(--ember-deep); font-weight:600; margin-bottom:10px;}
+  .market h3{font-size:1.3rem; margin-bottom:10px; font-weight:500;}
+  .market p{font-size:0.9rem; opacity:0.82; margin-bottom:16px;}
+  .market .tip{
+    font-size:0.85rem;
+    border-left:2px solid var(--ember);
+    padding-left:12px;
+    opacity:0.9;
+  }
+
+  /* Practical strip */
+  .practical{background:var(--ink); color:var(--cream);}
+  .practical .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:36px;}
+  .practical h4{font-family:'Fraunces',serif; font-size:1.6rem; font-weight:500; margin-bottom:8px;}
+  .practical p{font-size:0.85rem; color:#C9C0AE;}
+
+  /* Partner spotlight */
+  .spotlight{display:grid; grid-template-columns:0.9fr 1.1fr; gap:52px; align-items:center;}
+  .spotlight-card{
+    background:var(--pine);
+    color:var(--cream);
+    padding:36px;
+    border:1px solid var(--ink);
+  }
+  .spotlight-card .eyebrow{font-size:0.8rem; color:#D8C9A3; margin-bottom:14px;}
+  .spotlight-card h3{font-size:1.5rem; font-weight:500; margin-bottom:12px;}
+  .spotlight-card p{font-size:0.92rem; color:#E7DFC8; margin-bottom:20px;}
+  .spotlight-text h2{font-size:1.7rem; margin-bottom:16px; max-width:16ch;}
+  .spotlight-text p{font-size:0.95rem; margin-bottom:14px; max-width:48ch; opacity:0.85;}
+
+  footer{
+    background:var(--parchment);
+    border-top:1px solid var(--line);
+    padding:44px 0 36px;
+  }
+  .footer-row{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;}
+  .footer-row .brand{margin-bottom:8px;}
+  footer .cols{display:flex; gap:56px; font-size:0.88rem;}
+  footer .cols div{display:flex; flex-direction:column; gap:8px;}
+  footer .cols b{font-weight:600; margin-bottom:4px;}
+  .fine{margin-top:32px; font-size:0.78rem; opacity:0.6;}
+
+  @media (max-width: 820px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:2.3rem;}
+    .markets{grid-template-columns:1fr;}
+    .practical .wrap{grid-template-columns:repeat(2,1fr);}
+    .spotlight{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <div class="brand">Alsace, <span>marché par marché</span></div>
+    <div class="nav-links">
+      <a href="#marches">Les marchés</a>
+      <a href="#pratique">Infos pratiques</a>
+      <a href="#partenaires">Restaurateurs</a>
+    </div>
+    <div class="lang-switch"><b>FR</b><span>EN</span><span>DE</span></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Guide indépendant, mis à jour en continu — saison de Noël en Alsace</div>
+      <h1>Quel marché de Noël aujourd'hui, et pourquoi celui-là</h1>
+      <p class="sub">Douze marchés, des dizaines de villages, une seule question qui compte : lequel vaut le déplacement ce week-end précis. On croise affluence, météo et nouveautés pour vous éviter la queue et la déception.</p>
+      <div class="hero-actions">
+        <a class="btn btn-ember" href="#marches">Voir les marchés ouverts</a>
+        <a class="btn btn-ghost" href="#pratique">Préparer ma visite</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <h3>Ce week-end à Colmar</h3>
+      <div class="field"><span>Affluence prévue</span><b>Élevée — samedi</b></div>
+      <div class="field"><span>Météo</span><b>3°C, sec</b></div>
+      <div class="field"><span>Meilleur créneau</span><b>Avant 11h ou après 18h30</b></div>
+      <div class="field"><span>Nouveau cette année</span><b>Marché couvert Koïfhus</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="colombage"></div>
+
+<section id="marches">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Quatre marchés, quatre ambiances</h2>
+      <p>Chaque fiche est pensée pour trancher, pas pour lister — ce qu'on y trouve que nulle part ailleurs.</p>
+    </div>
+    <div class="markets">
+      <div class="market">
+        <div class="dates">24 nov. → 30 déc.</div>
+        <h3>Colmar</h3>
+        <p>Six marchés répartis dans la vieille ville, dont un dédié aux artisans locaux place de l'Ancienne Douane. Le plus dense, le plus photogénique, aussi le plus fréquenté.</p>
+        <div class="tip">À faire : arriver par le quartier de la Petite Venise, moins de monde qu'en venant de la gare.</div>
+      </div>
+      <div class="market">
+        <div class="dates">28 nov. → 24 déc.</div>
+        <h3>Strasbourg</h3>
+        <p>Le doyen de France, depuis 1570. Le grand sapin place Kléber sert de repère ; le marché place de la Cathédrale est le plus ancien noyau historique.</p>
+        <div class="tip">À faire : réserver son vin chaud "signature" à l'avance dans les chalets qui le proposent, rupture fréquente après 17h.</div>
+      </div>
+      <div class="market">
+        <div class="dates">28 nov. → 31 déc.</div>
+        <h3>Kaysersberg</h3>
+        <p>Village natal d'Albert Schweitzer, marché à taille humaine autour du château et de la rivière. Élu plusieurs fois "village préféré des Français".</p>
+        <div class="tip">À faire : traverser le pont fortifié au coucher du soleil, avant l'éclairage nocturne — deux ambiances en une visite.</div>
+      </div>
+      <div class="market">
+        <div class="dates">29 nov. → 30 déc.</div>
+        <h3>Riquewihr</h3>
+        <p>Cité viticole intégralement médiévale, remparts intacts. Le marché se fond dans les ruelles à colombages sans structures modernes visibles.</p>
+        <div class="tip">À faire : garer la voiture à l'entrée du village, la circulation piétonne y est dense dès 10h.</div>
+      </div>
+      <div class="market">
+        <div class="dates">28 nov. → 30 déc.</div>
+        <h3>Mulhouse</h3>
+        <p>Le marché des enfants, avec une patinoire et un village dédié aux plus jeunes place de la Réunion. Moins touristique, plus local.</p>
+        <div class="tip">À faire : idéal en semaine avec des enfants, nettement moins de queue qu'à Colmar ou Strasbourg.</div>
+      </div>
+      <div class="market">
+        <div class="dates">30 nov. → 24 déc.</div>
+        <h3>Obernai</h3>
+        <p>Marché de proximité, réputé pour ses produits fermiers et sa halle aux blés du XVIᵉ siècle transformée en espace d'exposition.</p>
+        <div class="tip">À faire : bon complément d'une journée à Strasbourg, à 25 minutes en voiture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="practical" id="pratique">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:44px;">
+      <h2 style="color:var(--cream); max-width:24ch;">Ce qu'on répond le plus souvent</h2>
+    </div>
+    <div class="wrap" style="padding:0;">
+      <div class="wrap" style="padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+        <div><h4>Stationnement</h4><p>Parkings relais conseillés à Colmar et Strasbourg les week-ends de forte affluence — liste et tarifs à jour.</p></div>
+        <div><h4>Avec des enfants</h4><p>Mulhouse et Obernai offrent plus d'espace et moins de foule que les grands marchés du centre.</p></div>
+        <div><h4>Budget moyen</h4><p>Repas sur le pouce, vin chaud et un artisanat : ce que dépense réellement un visiteur, marché par marché.</p></div>
+        <div><h4>Accès train</h4><p>Correspondances directes depuis Strasbourg vers Colmar, Sélestat et Obernai — fréquences en période de fêtes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="colombage"></div>
+
+<section id="partenaires">
+  <div class="wrap spotlight">
+    <div class="spotlight-text">
+      <h2>Où manger, recommandé par des gens du métier</h2>
+      <p>Plutôt qu'un classement anonyme, chaque restaurant mis en avant est sélectionné et présenté par un restaurateur alsacien du réseau — adresse, spécialité, et le bon créneau pour ne pas attendre.</p>
+      <p>Cet espace est ouvert aux restaurateurs et commerçants de la région qui veulent être visibles auprès des visiteurs des marchés, en direct depuis cette page.</p>
+    </div>
+    <div class="spotlight-card">
+      <div class="eyebrow">Adresse du moment</div>
+      <h3>Le Clos Alexis</h3>
+      <p>Wettolsheim, à dix minutes de Colmar. Cuisine alsacienne et pizzeria d'hiver — le point de chute conseillé après une matinée au marché de Colmar, avant la foule du déjeuner.</p>
+      <a class="btn btn-ember" href="#">Voir la fiche complète</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>
+      <div class="brand">Alsace, <span>marché par marché</span></div>
+      <div class="fine" style="margin-top:6px;">Guide indépendant — non affilié aux offices de tourisme officiels.</div>
+    </div>
+    <div class="cols">
+      <div><b>Explorer</b><a href="#marches">Les marchés</a><a href="#pratique">Infos pratiques</a></div>
+      <div><b>Pro</b><a href="#partenaires">Être référencé</a><a href="#">Espace restaurateurs</a></div>
+      <div><b>Suivre</b><a href="#">Instagram</a><a href="#">Newsletter</a></div>
+    </div>
+  </div>
+  <div class="wrap fine">V1 — maquette de structure et de contenu, à affiner avant mise en ligne.</div>
+</footer>
+
+</body>
+</html>
